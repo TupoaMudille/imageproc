@@ -1,0 +1,8 @@
+C:\Users\tanap\Documents\laba3\obj\Debug\laba3.csprojResolveAssemblyReference.cache
+C:\Users\tanap\Documents\laba3\obj\Debug\laba3.MainForm.resources
+C:\Users\tanap\Documents\laba3\obj\Debug\laba3.csproj.GenerateResource.Cache
+C:\Users\tanap\Documents\laba3\bin\Debug\laba3.exe.config
+C:\Users\tanap\Documents\laba3\bin\Debug\laba3.exe
+C:\Users\tanap\Documents\laba3\bin\Debug\laba3.pdb
+C:\Users\tanap\Documents\laba3\obj\Debug\laba3.exe
+C:\Users\tanap\Documents\laba3\obj\Debug\laba3.pdb
