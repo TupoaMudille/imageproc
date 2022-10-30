@@ -1,0 +1,8 @@
+C:\Users\tanap\Music\ex2\bin\Debug\ex2.exe.config
+C:\Users\tanap\Music\ex2\bin\Debug\ex2.exe
+C:\Users\tanap\Music\ex2\bin\Debug\ex2.pdb
+C:\Users\tanap\Music\ex2\obj\Debug\ex2.csprojResolveAssemblyReference.cache
+C:\Users\tanap\Music\ex2\obj\Debug\ex2.MainForm.resources
+C:\Users\tanap\Music\ex2\obj\Debug\ex2.csproj.GenerateResource.Cache
+C:\Users\tanap\Music\ex2\obj\Debug\ex2.exe
+C:\Users\tanap\Music\ex2\obj\Debug\ex2.pdb
