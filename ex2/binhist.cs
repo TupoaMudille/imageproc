@@ -18,31 +18,31 @@ namespace ex2
 	{
 		protected override Color calcNewPix(Bitmap sourceIm, int x, int y)
 		{
-			int red_max = sourceIm.GetPixel(0,0).R;
-			int green_max = sourceIm.GetPixel(0,0).G;
-			int blue_max = sourceIm.GetPixel(0,0).B;
-			int red_min = sourceIm.GetPixel(0,0).R;
-			int green_min = sourceIm.GetPixel(0,0).G;
-			int blue_min = sourceIm.GetPixel(0,0).B;
-			int T=0;
-			Color sourceCol = sourceIm.GetPixel(x,y);
-			for (int i = 0; i<sourceIm.Width; i++)
-				for (int j=0; j<sourceIm.Height; j++){
-					if (sourceCol.R>red_max) red_max = sourceCol.R;
-					if (sourceCol.G>green_max) green_max = sourceCol.G;
-					if (sourceCol.B>blue_max) blue_max = sourceCol.B;
-					
-					if (sourceCol.R<red_min) red_min = sourceCol.R;
-					if (sourceCol.G<green_min) green_min = sourceCol.G;
-					if (sourceCol.B<blue_min) blue_min = sourceCol.B;	
-					T++;
-					
+			int[] gist = new int[256];
+			for(int i = 0; i<256; i++)
+			{
+				gist[i] = 0;
 			}
-			
-			int new_T=(int)255*((red_max-red_min)+(green_max-green_min)+(blue_max-blue_min))/T;
-			Color resultCol = Color.FromArgb((int)(binSlice((int)(0.299*sourceCol.R + 0.587*sourceCol.G + 0.114*sourceCol.B),new_T)),
-			                                 (int)(binSlice((int)(0.299*sourceCol.R + 0.587*sourceCol.G + 0.114*sourceCol.B),new_T)),
-			                                 (int)(binSlice((int)(0.299*sourceCol.R + 0.587*sourceCol.G + 0.114*sourceCol.B),new_T)));
+			for(int i = 0; i<sourceIm.Width; i++)
+				{
+				for(int j =0; j<sourceIm.Height; j++)
+				{
+					gist[sourceIm.GetPixel(i, j).R]++;
+				}
+			}
+			int sum =0;
+			int sumV=0;
+			Color sourceCol = sourceIm.GetPixel(x,y);
+			for(int i = (int)(0+256*0.05f); i< (int)(256 - 256 * 0.05f); i++)
+			{
+				sum += i;
+				sumV += i * gist[i];
+			}
+					
+			int new_T=(int)(sumV / sum);
+			Color resultCol = Color.FromArgb((int)(binSlice((int)(sourceCol.R),new_T)),
+			                                 (int)(binSlice((int)(sourceCol.R),new_T)),
+			                                 (int)(binSlice((int)(sourceCol.R),new_T)));
 			return resultCol;
 		}
 		}

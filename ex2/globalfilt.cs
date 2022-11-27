@@ -20,10 +20,11 @@ namespace ex2
 		protected override Color calcNewPix(Bitmap sourceIm, int x, int y)
 		{
 			Color sourceCol = sourceIm.GetPixel(x,y);
+			int GT = 20;
 			
-			Color resultCol = Color.FromArgb((int)(binSlice((int)(0.299*sourceCol.R + 0.587*sourceCol.G + 0.114*sourceCol.B),128)),
-			                                 (int)(binSlice((int)(0.299*sourceCol.R + 0.587*sourceCol.G + 0.114*sourceCol.B),128)),
-			                                 (int)(binSlice((int)(0.299*sourceCol.R + 0.587*sourceCol.G + 0.114*sourceCol.B),128)));
+			Color resultCol = Color.FromArgb((int)(binSlice((int)(0.299*sourceCol.R + 0.587*sourceCol.G + 0.114*sourceCol.B),GT)),
+			                                 (int)(binSlice((int)(0.299*sourceCol.R + 0.587*sourceCol.G + 0.114*sourceCol.B),GT)),
+			                                 (int)(binSlice((int)(0.299*sourceCol.R + 0.587*sourceCol.G + 0.114*sourceCol.B),GT)));
 			return resultCol;
 		}
 	}

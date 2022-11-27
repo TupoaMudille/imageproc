@@ -61,13 +61,14 @@ namespace ex2
 		}
 		void niblackToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			globalfilt globalfilt = new globalfilt();
-			Bitmap resultIm = globalfilt.procIm(image);
+			niblatb nb = new niblatb();
+			Bitmap resultIm = nb.procIm(image);
 			pictureBox1.Image = resultIm;
 			pictureBox1.Refresh();
 		}
 		void globalHistToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			
 			binhist bhist = new binhist();
 			Bitmap resultIm = bhist.procIm(image);
 			pictureBox1.Image = resultIm;
@@ -103,43 +104,31 @@ namespace ex2
 		}
 		void gaussToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//ДЛЯ ВСЕЙ КАРТИНКИ В ЦЕЛОМ
-			Random rand = new Random();
-			int means = 0;
-			int sigma = 60;
-			for (int i = 0; i<image.Width; i++) 
-				for (int j=0; j<image.Height; j++)
-				{
-					Color sourceCol = image.GetPixel(i,j);
-					image.SetPixel(i,j,Color.FromArgb(Slice(sourceCol.R+rand.Next(means,sigma),0,255),Slice(sourceCol.G+rand.Next(means,sigma),0,255),Slice(sourceCol.B+rand.Next(means,sigma),0,255)));
-				}
-			pictureBox1.Image = image;
-			pictureBox1.Refresh();
+		 
+        
+            Bitmap res = (Bitmap)image.Clone();
+            var rnd = new Random();
+            int noise = 60;
+
+            for (int y = 0; y < image.Height; y++)
+                for (int x = 0; x < image.Width; x++)
+                {
+                    Color color = res.GetPixel(x, y);
+                    var addnoise = (rnd.NextDouble() + rnd.NextDouble() + rnd.NextDouble() + rnd.NextDouble() - 2) * noise;
+                    Color newColor = Color.FromArgb(Slice(color.R + (int)addnoise, 0, 255),
+                                                    Slice(color.G + (int)addnoise, 0, 255),
+                                                    Slice(color.B + (int)addnoise, 0, 255));
+                    res.SetPixel(x, y, newColor);
+                }
+
+            
+
+            image = res;
+            pictureBox1.Image = image;
+            pictureBox1.Refresh();
+            
+        
 			
-			
-			//ДЛЯ РАНДОМНЫХ ПИКСЕЛЕЙ
-			/*Random rand = new Random();
-			int means = 0;
-			int sigma = 60;
-			int countPix = rand.Next((int)image.Height/(image.Height/2),(int)image.Height*image.Width/(image.Height+image.Width));
-			for (int i=0;i<countPix;i++)
-				{	
-					int M = rand.Next(0,image.Width);
-					int N = rand.Next(0,image.Height);
-					int Mean = rand.Next(0,1);
-					if ((Mean==0)){
-						Color sourceCol = image.GetPixel(M,N);
-					image.SetPixel(M,N,Color.FromArgb(Slice(sourceCol.R+rand.Next(means,sigma),0,255),Slice(sourceCol.G+rand.Next(means,sigma),0,255),Slice(sourceCol.B+rand.Next(means,sigma),0,255)));
-						}
-				}
-			for (int i = 0; i<image.Width; i++) 
-				for (int j=0; j<image.Height; j++)
-					{
-						Color sourceCol = image.GetPixel(i,j);
-						image.SetPixel(i,j,Color.FromArgb(sourceCol.R,sourceCol.G,sourceCol.B));
-						}
-			pictureBox1.Image = image;
-			pictureBox1.Refresh();*/
 		}
 		void medianToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -178,9 +167,47 @@ namespace ex2
 			pictureBox1.Image = resultIm;
 			pictureBox1.Refresh();
 		}
-		
-		
-		
+		void psnrToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			//new psnr("cat.jpeg", "cat_gauss_notlocal.png");
+			new psnr("cat.jpeg", "cat_sp_med.png");
+		}
+		void ssimToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			//new ssim("cat.jpeg", "cat_gauss_notlocal.png");
+			new ssim("cat.jpeg", "cat_sp_med.png");
+		}
+		void panel1_Paint(object sender, PaintEventArgs e)
+		{	/*
+			//string testPicPath = "C:\\Users\\tanap\\Desktop\\test_ex2\\test_noise.png";
+			string testPicPath = "C:\\Users\\tanap\\Desktop\\test_ex2\\cat_gauss.png";
+			//string testPicPath = "C:\\Users\\tanap\\Desktop\\test_ex2\\cat.jpeg";
+			Bitmap ar = new Bitmap(testPicPath);
+			Graphics gr = e.Graphics;
+            Pen pr = new Pen(Color.Red,1);
+			int[] gistr = new int[256];
+
+			for(int i = 0; i<256; i++)
+			{
+				gistr[i] = 0;
+
+			}
+			for(int i = 0; i<ar.Width; i++)
+				{
+				for(int j =0; j<ar.Height; j++)
+				{
+					gistr[ar.GetPixel(i, j).R]++;
+				
+					
+				}
+				Point p1 = new Point(i,0);// первая точка
+					Point p2 = new Point(i,gistr[i]);// вторая точка
+              		gr.DrawLine(pr, p1, p2);
+
+			}
+			*/
+		}
+
 		
 	}
 }

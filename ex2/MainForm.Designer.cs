@@ -33,6 +33,9 @@ namespace ex2
 		private System.Windows.Forms.ToolStripMenuItem saltToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem medianToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem notlocalToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem psnrToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ssimToolStripMenuItem;
+		private System.Windows.Forms.Panel panel1;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -74,6 +77,9 @@ namespace ex2
 			this.saltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.medianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.notlocalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.psnrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ssimToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.panel1 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -82,7 +88,7 @@ namespace ex2
 			// 
 			this.pictureBox1.Location = new System.Drawing.Point(0, 58);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(670, 444);
+			this.pictureBox1.Size = new System.Drawing.Size(370, 208);
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
@@ -93,10 +99,12 @@ namespace ex2
 			this.fileToolStripMenuItem,
 			this.binarizationToolStripMenuItem,
 			this.filterToolStripMenuItem,
-			this.noiseToolStripMenuItem});
+			this.noiseToolStripMenuItem,
+			this.psnrToolStripMenuItem,
+			this.ssimToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(670, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(1023, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -112,14 +120,14 @@ namespace ex2
 			// openToolStripMenuItem
 			// 
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
 			this.openToolStripMenuItem.Text = "open";
 			this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
 			// 
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
 			this.saveToolStripMenuItem.Text = "save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
@@ -232,11 +240,34 @@ namespace ex2
 			this.notlocalToolStripMenuItem.Text = "notlocal";
 			this.notlocalToolStripMenuItem.Click += new System.EventHandler(this.notlocalToolStripMenuItem_Click);
 			// 
+			// psnrToolStripMenuItem
+			// 
+			this.psnrToolStripMenuItem.Name = "psnrToolStripMenuItem";
+			this.psnrToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+			this.psnrToolStripMenuItem.Text = "psnr";
+			this.psnrToolStripMenuItem.Click += new System.EventHandler(this.psnrToolStripMenuItem_Click);
+			// 
+			// ssimToolStripMenuItem
+			// 
+			this.ssimToolStripMenuItem.Name = "ssimToolStripMenuItem";
+			this.ssimToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+			this.ssimToolStripMenuItem.Text = "ssim";
+			this.ssimToolStripMenuItem.Click += new System.EventHandler(this.ssimToolStripMenuItem_Click);
+			// 
+			// panel1
+			// 
+			this.panel1.Location = new System.Drawing.Point(403, 58);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(568, 513);
+			this.panel1.TabIndex = 2;
+			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(670, 514);
+			this.ClientSize = new System.Drawing.Size(1023, 632);
+			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
